@@ -1,0 +1,1 @@
+Get-DistributionGroupMember -Identity putemailhere@domain.com -ResultSize Unlimited | Select Name, PrimarySMTPAddress, RecipientType |Export-CSV "C:\support\Distribution-Group-Members.csv"

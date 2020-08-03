@@ -1,0 +1,30 @@
+Ticket Ref - 23CA00000317 - TBTC00004696
+
+$UserCredential = Get-Credential
+
+$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+
+Import-PSSession $Session
+
+1) Create RoomList group
+New-DistributionGroup -Name MeetingRoomCalendars -DisplayName "All Rooms" –PrimarySmtpAddress allrooms@thebraintumourcharity.org –RoomList 
+
+2) Create calendar in O365 and change calendar type to "Room"
+Set-Mailbox "bakewell@thebraintumourcharity.org" -Type room
+
+3) Add calendar to the RoomList group
+Add-DistributionGroupMember -Identity "ALL ROOMS" -member "bakewell@thebraintumourcharity.org"
+
+4) Adjust settings so bookings replicate across all calendars
+---Room settings examples to be changed
+Get-CalendarProcessing -Identity meetingroom1@xxiiicap.com | FL
+
+Set-CalendarProcessing -Identity meetingroom1@xxiiicap.com -RemoveOldMeetingMessages $false
+
+Set-CalendarProcessing -Identity meetingroom1@xxiiicap.com -DeleteAttachments $false -DeleteComments $false
+
+Set-CalendarProcessing -Identity meetingroom1@xxiiicap.com -DeleteSubject $false -AddOrganizerToSubject $false
+
+Get-CalendarProcessing -Identity meetingroom1@xxiiicap.com | FL
+
+Set-CalendarProcessing -Identity research@prospect-us.co.uk -AllowConflicts $true

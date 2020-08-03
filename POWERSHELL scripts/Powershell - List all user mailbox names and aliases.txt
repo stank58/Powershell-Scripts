@@ -1,0 +1,1 @@
+Get-Recipient | Select DisplayName, RecipientType, EmailAddresses | Export-Csv C:\Users\skelly.HSH\Desktop\EmailAddresses.csv
