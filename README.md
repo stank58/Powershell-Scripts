@@ -8,3 +8,6 @@ I should add, some of these are set up to be used stand alone, whereas some are 
 If this is the case simply look at the file named "1) PowerShell - NEW LOGIN .txt"
 
 You can either access the files as .txt which are within the folder or simply use the .ps1 files which show the syntax.
+
+
+License can be found at: https://github.com/stank58/Powershell-Scripts/blob/master/License.txt
